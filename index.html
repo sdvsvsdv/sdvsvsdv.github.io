@@ -139,12 +139,25 @@ nav.scrolled {
   letter-spacing: -0.03em;
 }
 .nav-logo span { color: #10b981; }
-.nav-links { display: flex; gap: 40px; align-items: center; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
   font-size: 13px; font-weight: 400; color: #a1a1aa;
   letter-spacing: 0.05em; transition: color 0.2s;
 }
 .nav-links a:hover { color: #f4f4f5; }
+
+/* Resume link in navbar */
+.nav-cv-link {
+  color: #10b981 !important;
+  font-weight: 600 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-cv-link:hover {
+  text-decoration: underline;
+}
+
 .nav-cta {
   padding: 9px 22px; border: 1px solid rgba(16,185,129,0.4);
   border-radius: 100px; font-size: 13px; color: #10b981;
@@ -194,24 +207,38 @@ nav.scrolled {
   font-weight: 700; color: #10b981; overflow: hidden; height: 1.2em;
 }
 .ticker-item { display: block; transform: translateY(100%); }
-.hero-cta-block { display: flex; gap: 16px; align-items: center; }
+.hero-cta-block { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .btn-magnetic {
   position: relative; overflow: hidden;
-  padding: 16px 36px; border-radius: 100px;
+  padding: 16px 32px; border-radius: 100px;
   font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600;
   letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px;
-  transition: transform 0.3s cubic-bezier(.23,1,.32,1);
+  transition: transform 0.3s cubic-bezier(.23,1,.32,1), background 0.2s, border-color 0.2s;
+  white-space: nowrap;
 }
 .btn-primary {
   background: #10b981; color: #070708;
+}
+.btn-cv {
+  border: 1px solid rgba(16,185,129,0.4);
+  background: rgba(16,185,129,0.06);
+  color: #10b981;
+  backdrop-filter: blur(10px);
+}
+.btn-cv:hover {
+  background: rgba(16,185,129,0.18);
+  border-color: #10b981;
 }
 .btn-secondary {
   border: 1px solid rgba(255,255,255,0.12); color: #f4f4f5;
   backdrop-filter: blur(10px);
 }
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.3);
+}
 .btn-magnetic .btn-inner {
   position: relative; z-index: 1;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 8px;
 }
 .hero-scroll-hint {
   writing-mode: vertical-rl; font-size: 11px; color: #3f3f46;
@@ -477,6 +504,65 @@ section {
 }
 .footer-email:hover { color: #10b981; }
 .footer-email svg { width: 18px; height: 18px; }
+
+/* ─── FREELANCING PLATFORMS ─────────────────────────────── */
+.footer-freelance {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer-freelance-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #71717a;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-freelance-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+}
+.freelance-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.freelance-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: rgba(22, 23, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  font-weight: 500;
+  color: #d4d4d8;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+.freelance-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+.freelance-card svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+.freelance-card:hover svg {
+  transform: translate(2px, -2px);
+}
+
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;
   margin-top: 80px; padding-top: 32px;
@@ -594,8 +680,6 @@ section {
   background: #10b981;
   box-shadow: 0 0 10px #10b981;
 }
-
-
 </style>
 </head>
 <body>
@@ -624,6 +708,8 @@ section {
     <a href="#projects">Work</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Timeline</a>
+    <!-- رابط الـ CV في الناف بار -->
+    <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="nav-cv-link">Resume ↗</a>
     <a href="#footer" class="nav-cta">Let's Talk →</a>
   </div>
 </nav>
@@ -653,6 +739,15 @@ section {
       <a href="#projects" class="btn-magnetic btn-primary" data-magnetic>
         <span class="btn-inner">Explore Work ↓</span>
       </a>
+
+      <!-- زر السيرة الذاتية الأساسي في الهيرو -->
+      <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="btn-magnetic btn-cv" data-magnetic>
+        <span class="btn-inner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Download CV
+        </span>
+      </a>
+
       <a href="#footer" class="btn-magnetic btn-secondary" data-magnetic>
         <span class="btn-inner">Contact</span>
       </a>
@@ -676,7 +771,6 @@ section {
       <!-- ─── PHOTO CARD ─── -->
       <div class="about-photo-card reveal" data-tilt>
         <div class="photo-container">
-          <!-- استبدل your-photo.jpg باسم ملف صورتك -->
           <img src="profile.jpg" alt="George Ehab" class="photo-img"/>
           <div class="photo-overlay"></div>
           <div class="photo-badge">
@@ -716,7 +810,6 @@ section {
 <!-- ─── MARQUEE ─── -->
 <div class="marquee-section" aria-hidden="true">
   <div class="marquee-track" id="marqueeTrack">
-    <!-- items doubled for seamless loop -->
     <span class="marquee-item">Python</span>
     <span class="marquee-item">TensorFlow</span>
     <span class="marquee-item">ResNet50</span>
@@ -810,7 +903,7 @@ section {
       </div>
     </div>
 
-    <!-- 04: Churn Detection (New Replacement) -->
+    <!-- 04: Churn Detection -->
     <div class="project-card reveal" data-tilt>
       <div class="card-number">04</div>
       <div class="card-tags">
@@ -828,7 +921,7 @@ section {
       </div>
     </div>
 
-    <!-- 05: Film Recommender (New Addition) -->
+    <!-- 05: Film Recommender -->
     <div class="project-card reveal" data-tilt>
       <div class="card-number">05</div>
       <div class="card-tags">
@@ -883,7 +976,6 @@ section {
   <h2 class="section-title reveal" style="margin-bottom:64px">Tools that<br>build futures.</h2>
 
   <div class="skills-bento">
-
     <div class="bento-cell span2 reveal">
       <div class="bento-title">Core ML & Data</div>
       <div class="skill-pills">
@@ -946,7 +1038,6 @@ section {
         <span class="skill-pill">Calculus</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -956,7 +1047,6 @@ section {
   <h2 class="section-title reveal" style="margin-bottom:80px">Milestones<br>that shaped me.</h2>
 
   <div class="timeline">
-
     <div class="timeline-item reveal">
       <div class="timeline-year">2025</div>
       <div class="timeline-line-col">
@@ -1008,7 +1098,6 @@ section {
         <div class="timeline-desc">Represented at international science competitions during high school — building a foundation in systematic research, innovation, and engineering thinking.</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1026,12 +1115,36 @@ section {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>
 
+  <!-- ─── FREELANCING PLATFORMS SECTION ─── -->
+  <div class="footer-freelance reveal">
+    <span class="footer-freelance-label">Hire Me On Platforms</span>
+    <div class="freelance-grid">
+      <!-- 1. Upwork -->
+      <a href="https://www.upwork.com/freelancers/~017163e0ee2546d352?mp_source=share" target="_blank" rel="noopener noreferrer" class="freelance-card" data-magnetic>
+        <span>Upwork</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <!-- 2. Mostaql (مستقل) -->
+      <a href="https://mostaql.com/u/George_Ehab5" target="_blank" rel="noopener noreferrer" class="freelance-card" data-magnetic>
+        <span>Mostaql (مستقل)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+
+      <!-- 3. Freelancer (أو Khamsat / Fiverr) -->
+      <a href="https://www.fiverr.com/george_ehab5/buying?source=avatar_menu_profile" target="_blank" rel="noopener noreferrer" class="freelance-card" data-magnetic>
+        <span>Fiverr</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 George Ehab Sobhy · Alexandria, Egypt</div>
     <div class="footer-links">
       <a href="tel:+201224376369">+20 122 437 6369</a>
-      <a href="https://www.linkedin.com/in/georgedos3">LinkedIn</a>
-      <a href="https://github.com/sdvsvsdv">GitHub</a>
+      <a href="https://www.linkedin.com/in/georgedos3" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/sdvsvsdv" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
   </div>
 </footer>
